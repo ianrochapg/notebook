@@ -14,11 +14,13 @@ class ContactsController < ApplicationController
 
   # GET /contacts/new
   def new
+    options_for_select
     @contact = Contact.new
   end
 
   # GET /contacts/1/edit
   def edit
+    options_for_select
   end
 
   # POST /contacts
@@ -65,6 +67,10 @@ class ContactsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
       @contact = Contact.find(params[:id])
+    end
+
+    def options_for_select
+      @kind_options_for_select = Kind.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
